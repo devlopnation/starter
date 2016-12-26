@@ -1,0 +1,33 @@
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+@import "../www/lib/ionic/scss";
+.left-heading {
+	width: 30%;
+}
+
+.rounded {
+	border-radius: 40px;
+	opacity: 0.7;
+	font-color: white;
+}
+
+.tab-plane-color {
+	color: Balanced;
+}
+
+.tab-hotel-color {
+	color: calm;
+}
+
+.tab-bus-color {
+	color: calm;
+}
+
+.tab-train-color {
+	color: calm;
+}
+
+.bordering {
+	border-size: 10px;
+	border-color: white;
+}
+

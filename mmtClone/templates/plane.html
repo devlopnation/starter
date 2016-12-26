@@ -1,0 +1,72 @@
+<ion-view title="Plane" hide-nav-bar="true" id="page2">
+    <ion-content padding="true" style="background: url(img/LjYMj5T5T7Ka6dF0WhDd_flight1320x742.jpg) no-repeat center;background-size:cover;" class="manual-ios-statusbar-padding">
+        <h3 id="plane-heading1" style="color:#FDF8F8;font-weight:300;text-align:center;">MMT Clone</h3>
+        <form id="plane-form2" class="list rounded">
+            <div class="spacer" style="width: 300px; height: 7px;"></div>
+            <ion-radio id="plane-radio1" name="tripType" class="rounded">One Way</ion-radio>
+            <div class="spacer" style="width: 300px; height: 6px;"></div>
+            <ion-radio id="plane-radio2" name="tripType" class="rounded">Round Trip</ion-radio>
+            <div class="spacer" style="width: 300px; height: 6px;"></div>
+        </form>
+        <div id="plane-container2">
+            <form id="plane-form3" class="list">
+                <label class="item item-select rounded" id="plane-select1" name="source">
+                    <span class="input-label">Source</span>
+                    <select>
+                        <option>Delhi</option>
+                        <option>Mumbai</option>
+                        <option>Goa</option>
+                    </select>
+                </label>
+                <div class="spacer" style="width: 300px; height: 6px;"></div>
+                <label class="item item-select rounded" id="plane-select2" name="destination">
+                    <span class="input-label">Destination</span>
+                    <select>
+                        <option>Goa</option>
+                        <option>Mumbai</option>
+                        <option>Delhi</option>
+                    </select>
+                </label>
+            </form>
+        </div>
+        <div class="spacer" style="width: 300px; height: 23px;"></div>
+        <div id="plane-container3">
+            <form id="plane-form4" class="list">
+                <label class="item item-input rounded" id="plane-input1">
+                    <span class="input-label">Departure</span>
+                    <input type="date" placeholder="">
+                </label>
+                <div class="spacer" style="width: 300px; height: 8px;"></div>
+                <label class="item item-input rounded" id="plane-input2">
+                    <span class="input-label">Arrival</span>
+                    <input type="date" placeholder="">
+                </label>
+            </form>
+        </div>
+        <div class="spacer" style="height: 10px;"></div>
+        <form id="plane-form5" class="list">
+            <div class="spacer" style="width: 300px; height: 8px;"></div>
+            <ion-item class="range range-positive rounded" id="plane-range2">Adult
+                <input type="range" value="1" min="1" max="15" step="1">
+            </ion-item>
+            <div class="spacer" style="width: 300px; height: 8px;"></div>
+            <ion-item class="range range-positive rounded" id="plane-range4">Child
+                <input type="range" value="1" min="1" max="15" step="1">
+            </ion-item>
+            <div class="spacer" style="width: 300px; height: 8px;"></div>
+            <ion-item class="range range-positive rounded" id="plane-range5">Infant
+                <input type="range" value="1" min="1" max="15" step="1">
+            </ion-item>
+            <div class="spacer" style="width: 300px; height: 8px;"></div>
+        </form>
+        <div id="plane-container4">
+            <div id="plane-button-bar1" class="button-bar">
+                <button id="plane-button4" style="border-radius:25px 25px 25px 25px;" class="button button-stable  button-block rounded">Economy</button>
+                <button id="plane-button5" style="border-radius:25px 25px 25px 25px;" class="button button-stable  button-block rounded">Business</button>
+            </div>
+            <div id="plane-container5">
+                <a ui-sref="tabsController.commonList" id="plane-button7" style="border-radius:20px 20px 20px 20px;" class="button button-positive  button-block icon-left ion-android-search rounded">Search</a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

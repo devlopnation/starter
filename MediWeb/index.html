@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="webs">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Medinet</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <script src="/js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/ui-bootstrap-2.2.0.min.js"></script>
+    <script src="js/website.js"></script>
+  </head>
+  <body ng-controller="mainCtrl as mCtrl">
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Medinet</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" data-toggle="modal" data-target="#addModal">Add Medicine</a></li>
+        <li><a href="#">Sale</a></li>
+        <li><a href="#">Generate</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Users</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">LogOut</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    
+    <div class="container-fluid">
+        <!--Search bar Row-->
+          
+           <div class="row">
+            <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                               <form ng-submit="mCtrl.search(searchQuery)" >
+                                <input type="text" class="  search-query form-control" placeholder="Search" name="searchQuery" ng-model="searchQuery" />
+                                </form>
+                    </div>
+            </div>
+        </div>
+        
+        <!--Search bar row ends-->
+        
+        <br>
+        
+        <!--Result and Error div-->
+        
+        <div class="container" ng-show="isSearched">
+          
+          <!--<div ng-include="template/result.html">
+              
+          </div>-->
+           <div class="panel panel-success" >
+               <div class="panel-heading"><h1>Search Result</h1></div>
+                  <div class="panel-body">
+                        <h3><strong>NAME : </strong> {{mCtrl.product.name}} </h3>
+                        <h3><strong>COMPANY : </strong> {{mCtrl.product.company}} </h3>
+                        <h3><strong>DOSAGE : </strong> {{mCtrl.product.dosage}} </h3>
+                        <h3><strong>PRICE : </strong> {{mCtrl.product.price | currency}} </h3>    
+                  </div>
+                  <div class="panel-footer">
+                      <!-- Indicates a successful or positive action -->
+                    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#updateModal">Update</button>
+                 <!-- Indicates a successful or positive action -->
+                    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                  </div>
+            </div>
+        </div>
+        
+        <div class="container" ng-show="isError">
+          
+           <div class="panel panel-danger" >
+               <div class="panel-heading"><h1>Error</h1></div>
+                  <div class="panel-body">
+                          <h2>Error : {{mCtrl.error.name}}</h2>
+                          <h4>Description : {{mCtrl.error.description}}</h4>
+                  </div>
+            </div>
+        </div>
+        
+        <!--Result div ends-->
+        
+        
+        <!-- Add Modal -->
+                <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <form >
+                     <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="addModalLabel">Add Medicine</h4>
+                      </div>
+                      <div class="modal-body">
+                                      <div class="form-group">
+                                        <label for="medName">Name</label>
+                                        <input type="text" class="form-control input-lg" id="medName" placeholder="Medicine Name" ng-model="medName">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="companyName">Company Name</label>
+                                        <input type="text" class="form-control input-lg" id="companyName" placeholder="Medicine Company Name" ng-model="companyName">
+                                      </div>  
+                                      <div class="form-group">
+                                        <label for="dosage">Dosage</label>
+                                        <input type="text" class="form-control input-lg" id="dosage" placeholder="Dosage in mg" ng-model="dosage">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="price">Price</label>
+                                        <input type="text" class="form-control input-lg" id="price" placeholder="price" ng-model="price">
+                                      </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" ng-submit="addMed(product)">Add</button>
+                      </div>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+        
+        <!-- Update Modal -->
+                <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel">
+                  <div class="modal-dialog" role="document">
+                   <form>
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="updateModalLabel">Update Medicine</h4>
+                      </div>
+                      <div class="modal-body">
+                            <div class="form-group">
+                                        <label for="medName">Name</label>
+                                        <input type="text" class="form-control input-lg" id="medName" placeholder="Medicine Name">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="companyName">Company Name</label>
+                                        <input type="text" class="form-control input-lg" id="companyName" placeholder="Medicine Company Name">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="dosage">Dosage</label>
+                                        <input type="text" class="form-control input-lg" id="dosage" placeholder="Dosage in mg">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="price">Price</label>
+                                        <input type="text" class="form-control input-lg" id="price" placeholder="price">
+                                      </div>
+                                      <h3>
+                                      Please Enter <strong class="text-danger">UPDATE</strong> in text Box<br>
+                                      then Press Save Changes button 
+                                      </h3>
+                                       <div class="form-group">
+                                        <input type="text" class="form-control input-lg" id="updatebox" placeholder="Type UPDATE">
+                                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+                
+        <!-- Delete Modal -->
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel">
+                  <div class="modal-dialog" role="document">
+                   <form action="submit">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="deleteModalLabel">Delete Medicine</h4>
+                      </div>
+                      <div class="modal-body">
+                            <h3><strong>Note : </strong>Are you Sure you want to delete this item ?<br>
+                                      Please Enter <strong class="text-danger">DELETE</strong> in text Box<br>
+                                      then Press Delete button 
+                                      </h3>
+                                       <div class="form-group">
+                                        <input type="text" class="form-control input-lg" id="deletebox" placeholder="Type DELETE">
+                                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                      </div>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+        
+    </div>
+  </body>
+</html>

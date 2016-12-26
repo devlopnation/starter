@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="IPApp" >
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<!--setup ionica-->
+    <link rel="stylesheet" href="lib/ionic/css/ionic.css">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    
+    <!--setup app-->
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+    
+    </head>
+    <body ng-controller="IPCtrl" >
+        <ion-pane>
+            <ion-header-bar class="bar-royal">
+                <h1 class="title">India Property</h1>
+            </ion-header-bar>
+            <ion-content ng-init="IPApp.currentSub">
+                <div class="card">
+                    <div class="item item-avatar">
+                        <img data-ng-src="{{ currentSub.thumb_url }}" alt="Thumb">
+                        <p> {{ currentSub.title }} </p>
+                        <p> {{ currentSub.price }} </p>
+                    </div>
+                    <div class="item item-body">
+                        <img data-ng-if="currentSub.img_url" data-ng-src="{{ currentSub.img_url }}" alt="Featured Image" class="full-image">    
+                        <p>{{currentSub.property_type}}</p>
+                        <p data-ng-bind-html="currentSub.summary"></p>
+                    </div>
+                    <div class="item tabs tabs-secondary tabs-icon-left">
+                       <a class="tab-item" href="detail.html" data-ng-click="goToDetail($index)">
+                           <i class="icon ion-ios-book"></i>
+                           Read More
+                       </a>
+                        <a class="tab-item" data-ng-click="goToDetail($index)">
+                            <i class="icon ion-navigate"></i>
+                            Direction
+                        </a>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-pane>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<ion-view title="Hotels" hide-nav-bar="true" id="page6">
+    <ion-content padding="true" style="background: url(img/4tUm9g7MQzOhnpnS9XtH_Cheap-Travel.jpg) no-repeat center;background-size:cover;" class="manual-ios-statusbar-padding">
+        <h3 id="hotels-heading2" style="color:#FDF8F8;font-weight:300;text-align:center;">MMT clone</h3>
+        <div class="spacer" style="width: 300px; height: 7px;"></div>
+        <form id="hotels-form6" class="list">
+            <label class="item item-input rounded" id="hotels-input3">
+                <input type="text" placeholder="City, Country or Hotel Name ">
+            </label>
+        </form>
+        <div id="hotels-container6">
+            <form id="hotels-form7" class="list">
+                <div class="spacer" style="width: 300px; height: 4px;"></div>
+                <label class="item item-input rounded" id="hotels-input4">
+                    <span class="input-label">Check-In</span>
+                    <input type="date" placeholder="">
+                </label>
+                <div class="spacer" style="width: 300px; height: 6px;"></div>
+                <label class="item item-input rounded" id="hotels-input7">
+                    <span class="input-label">Check-Out</span>
+                    <input type="date" placeholder="">
+                </label>
+                <div class="spacer" style="width: 300px; height: 12px;"></div>
+            </form>
+        </div>
+        <div id="hotels-container7">
+            <form id="hotels-form10" class="list">
+                <ion-item class="range range-positive rounded" id="hotels-range6">Room
+                    <input type="range" value="1" min="0" max="10" step="1">
+                </ion-item>
+                <div class="spacer" style="width: 300px; height: 10px;"></div>
+                <ion-item class="range range-positive rounded" id="hotels-range7">Adult
+                    <input type="range" value="1" min="1" max="15" step="1">
+                </ion-item>
+                <div class="spacer" style="width: 300px; height: 10px;"></div>
+                <ion-item class="range range-positive rounded" id="hotels-range8">Children
+                    <input type="range" value="0" min="0" max="10" step="1">
+                </ion-item>
+                <div class="spacer" style="width: 300px; height: 10px;"></div>
+            </form>
+        </div>
+        <div id="hotels-container8">
+            <div class="spacer" style="width: 300px; height: 8px;"></div>
+            <a ui-sref="tabsController.commonList" id="hotels-button8" class="button button-positive  button-block icon-left ion-android-search rounded">Search</a>
+        </div>
+    </ion-content>
+</ion-view>
